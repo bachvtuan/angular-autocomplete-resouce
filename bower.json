@@ -1,0 +1,24 @@
+{
+  "name": "angular-autocomplete-resource",
+  "version": "0.0.1",
+  "main": "lib/tag_input.js",
+  "homepage": "https://github.com/bachvtuan/angular-autocomplete-resouce",
+  "authors": [
+    "bachvtuan <bachvtuan@gmail.com>"
+  ],
+  "ignore": [
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "description": "Angular Autocomplete resource",
+  "keywords": [
+    "autocomplete",
+    "angularjs"
+  ],
+  "license": "MIT"
+}
