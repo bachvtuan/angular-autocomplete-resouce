@@ -1,5 +1,5 @@
 angular.module('app').controller('Index_Ctrl', 
-  ['$scope','$log', function($scope, $log){
+  ['$scope','$log', '$http', function($scope, $log, $http){
      $scope.template_url = 'templates/index_ctrl.html';
      $scope.dump_list =  [
       {id:1,name:"One"},
@@ -43,5 +43,44 @@ angular.module('app').controller('Index_Ctrl',
       return response( return_list );
     }
     /** END SELECT TAG 2 **/
+
+
+    /** BEGIN SELECT TAG 3 **/
+    //with init data
+    $scope.select_tags_3 = [];
+    $scope.tags_3_options = {
+      //id:"id",
+      label:"full"
+    };
+
+
+    $scope.tags_3_resouce = function( term, callback ){
+      //No filter
+      var return_list = [];
+      term = term.toLowerCase();
+      var url = 'http://maps.google.com/maps/api/geocode/json?address='+ encodeURI( term ) +'&sensor=false';
+      $http.get(url).then(function( response ){
+        console.log("response",response);
+        if ( !response.data || !response.data.results ){
+          return callback( [] );
+        }
+
+        for( var i =0; i < response.data.results.length; i++ ){
+          return_list.push( {
+            //id: response.data.results[i].geometry.location,
+            full:response.data.results[i].formatted_address
+          } );
+          
+        }
+
+        return callback( return_list );
+
+      }, function(err){
+        callback( return_list );
+      });
+      
+    }
+    /** END SELECT TAG 3 **/
+
   }
 ]);
